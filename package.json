@@ -1,10 +1,10 @@
 {
 	"name": "tianma-modular",
 	"description": "",
-	"version": "1.0.0-b1",
+	"version": "1.0.0",
 	"license": "MIT",
 	"dependencies": {
-		"libm": "~0.9.2"
+		"libm": "~1.0.0"
 	},
 	"engines": {
 		"node": ">=0.12.0"
