@@ -4,8 +4,14 @@ var fs = require('fs'),
 	libm = require('libm'),
 	path = require('path');
 
-module.exports = function (root) {
-	root = path.resolve(root || './');
+module.exports = function (config) {
+	if (typeof config === 'string') {
+		config = {
+			root: config
+		};
+	}
+
+	config.root = path.resolve(config.root || './');
 	
 	var compile;
 
@@ -15,8 +21,10 @@ module.exports = function (root) {
 			extname = path.extname(req.pathname);
 			
 		compile = compile || libm({
-			root: root, 
-			base: (req.base || '/').substring(1)
+			root: config.root, 
+			base: (req.base || '/').substring(1),
+			scope: config.scope || '',
+			moduledir: config.moduledir || 'node_modules'
 		});
 		
 		yield next;
